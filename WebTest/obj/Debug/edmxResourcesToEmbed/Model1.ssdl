@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagazijnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Vestiging">
+    <Key>
+      <PropertyRef Name="VestigingID" />
+    </Key>
+    <Property Name="VestigingID" Type="int" Nullable="false" />
+    <Property Name="Locatie" Type="nchar" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="Voorraad">
+    <Key>
+      <PropertyRef Name="VoorraadID" />
+    </Key>
+    <Property Name="Voorraad" Type="int" />
+    <Property Name="VestigingID" Type="int" Nullable="false" />
+    <Property Name="ProductID" Type="int" Nullable="false" />
+    <Property Name="Product_Name" Type="varchar" MaxLength="250" />
+    <Property Name="Vestiging_Name" Type="varchar" MaxLength="250" />
+    <Property Name="VoorraadID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Products_Products">
+    <End Role="Products" Type="Self.Products" Multiplicity="1" />
+    <End Role="Products1" Type="Self.Products" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Products1">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProductID">
+    <End Role="Products" Type="Self.Products" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voorraad" Type="Self.Voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Products">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Voorraad">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VestigingID">
+    <End Role="Vestiging" Type="Self.Vestiging" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Voorraad" Type="Self.Voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vestiging">
+        <PropertyRef Name="VestigingID" />
+      </Principal>
+      <Dependent Role="Voorraad">
+        <PropertyRef Name="VestigingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MagazijnModelStoreContainer">
+    <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Vestiging" EntityType="Self.Vestiging" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Voorraad" EntityType="Self.Voorraad" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Products_Products" Association="Self.FK_Products_Products">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Products1" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="ProductID" Association="Self.ProductID">
+      <End Role="Products" EntitySet="Products" />
+      <End Role="Voorraad" EntitySet="Voorraad" />
+    </AssociationSet>
+    <AssociationSet Name="VestigingID" Association="Self.VestigingID">
+      <End Role="Vestiging" EntitySet="Vestiging" />
+      <End Role="Voorraad" EntitySet="Voorraad" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

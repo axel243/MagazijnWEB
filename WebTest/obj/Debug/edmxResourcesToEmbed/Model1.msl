@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MagazijnModelStoreContainer" CdmEntityContainer="MagazijnEntities">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="MagazijnModel.Product">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vestigings">
+      <EntityTypeMapping TypeName="MagazijnModel.Vestiging">
+        <MappingFragment StoreEntitySet="Vestiging">
+          <ScalarProperty Name="VestigingID" ColumnName="VestigingID" />
+          <ScalarProperty Name="Locatie" ColumnName="Locatie" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Voorraads">
+      <EntityTypeMapping TypeName="MagazijnModel.Voorraad">
+        <MappingFragment StoreEntitySet="Voorraad">
+          <ScalarProperty Name="VoorraadID" ColumnName="VoorraadID" />
+          <ScalarProperty Name="Vestiging_Name" ColumnName="Vestiging_Name" />
+          <ScalarProperty Name="Product_Name" ColumnName="Product_Name" />
+          <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+          <ScalarProperty Name="VestigingID" ColumnName="VestigingID" />
+          <ScalarProperty Name="Voorraad1" ColumnName="Voorraad" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

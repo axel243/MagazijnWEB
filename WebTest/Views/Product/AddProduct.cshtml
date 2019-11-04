@@ -1,0 +1,12 @@
+﻿@model Product
+
+@using (Html.BeginForm("Add", "Product"))
+{
+    <h2>Add a new Product here. No duplicate please!</h2>
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+
+
+    <button type="submit">Add</button>
+}

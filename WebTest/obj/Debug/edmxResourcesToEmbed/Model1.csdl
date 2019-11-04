@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MagazijnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductID" />
+    </Key>
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Voorraads" Relationship="MagazijnModel.ProductID" FromRole="Product" ToRole="Voorraad" />
+    <NavigationProperty Name="Products1" Relationship="MagazijnModel.FK_Products_Products" FromRole="Product" ToRole="Product1" />
+    <NavigationProperty Name="Product1" Relationship="MagazijnModel.FK_Products_Products" FromRole="Product1" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Vestiging">
+    <Key>
+      <PropertyRef Name="VestigingID" />
+    </Key>
+    <Property Name="VestigingID" Type="Int32" Nullable="false" />
+    <Property Name="Locatie" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <NavigationProperty Name="Voorraads" Relationship="MagazijnModel.VestigingID" FromRole="Vestiging" ToRole="Voorraad" />
+  </EntityType>
+  <EntityContainer Name="MagazijnEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Vestigings" EntityType="Self.Vestiging" />
+    <EntitySet Name="Voorraads" EntityType="MagazijnModel.Voorraad" />
+    <AssociationSet Name="ProductID" Association="MagazijnModel.ProductID">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Voorraad" EntitySet="Voorraads" />
+    </AssociationSet>
+    <AssociationSet Name="VestigingID" Association="MagazijnModel.VestigingID">
+      <End Role="Vestiging" EntitySet="Vestigings" />
+      <End Role="Voorraad" EntitySet="Voorraads" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Products_Products" Association="MagazijnModel.FK_Products_Products">
+      <End Role="Product" EntitySet="Products" />
+      <End Role="Product1" EntitySet="Products" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Voorraad">
+    <Key>
+      <PropertyRef Name="VoorraadID" />
+    </Key>
+    <Property Name="Voorraad1" Type="Int32" />
+    <Property Name="VestigingID" Type="Int32" Nullable="false" />
+    <Property Name="ProductID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Product" Relationship="MagazijnModel.ProductID" FromRole="Voorraad" ToRole="Product" />
+    <NavigationProperty Name="Vestiging" Relationship="MagazijnModel.VestigingID" FromRole="Voorraad" ToRole="Vestiging" />
+    <Property Name="Product_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Vestiging_Name" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="VoorraadID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <Association Name="ProductID">
+    <End Type="MagazijnModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MagazijnModel.Voorraad" Role="Voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Voorraad">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VestigingID">
+    <End Type="MagazijnModel.Vestiging" Role="Vestiging" Multiplicity="1" />
+    <End Type="MagazijnModel.Voorraad" Role="Voorraad" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vestiging">
+        <PropertyRef Name="VestigingID" />
+      </Principal>
+      <Dependent Role="Voorraad">
+        <PropertyRef Name="VestigingID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Products_Products">
+    <End Type="MagazijnModel.Product" Role="Product" Multiplicity="1" />
+    <End Type="MagazijnModel.Product" Role="Product1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductID" />
+      </Principal>
+      <Dependent Role="Product1">
+        <PropertyRef Name="ProductID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

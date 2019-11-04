@@ -1,0 +1,35 @@
+﻿@model IEnumerable<WebTest.Vestiging>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>View</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(v => v.VestigingID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(v => v.Locatie)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.VestigingID)
+    </td>
+    <td>
+        <a> @Html.ActionLink(item.Locatie, "showVestigingDetail", "Vestiging", new { id = item.VestigingID }, null)</a>
+    </td>
+    <td>
+        <a> @Html.ActionLink("ProductVoorraad", "showVestegingVoorraad", "Vestiging", new { id = item.VestigingID }, null)</a>
+    </td>
+</tr>
+    }
+
+</table>

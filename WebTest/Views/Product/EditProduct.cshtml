@@ -1,0 +1,22 @@
+﻿@model Product
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Html.DisplayFor(model => model.ProductID)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+
+
+@using (Html.BeginForm("Edit", "Product"))
+{
+    <h2>Edit a Product here.</h2>
+    @Html.LabelFor(m => m.Name)
+    @Html.TextBoxFor(m => m.Name)
+    @Html.ValidationMessageFor(m => m.Name)
+    @Html.HiddenFor(m => m.ProductID)
+
+
+    <button type="submit">Edit</button>
+}

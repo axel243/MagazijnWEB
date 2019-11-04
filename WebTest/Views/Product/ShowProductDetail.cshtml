@@ -1,0 +1,10 @@
+﻿@model Product
+
+@{
+    Layout = "~/Views/Shared/Layout.cshtml";
+    ViewBag.Title = Model.Name;
+}
+
+<h2>@Html.DisplayFor(model => model.ProductID)</h2>
+<h2>@Html.DisplayFor(model => model.Name)</h2>
+

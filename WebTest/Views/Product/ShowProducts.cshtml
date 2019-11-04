@@ -1,0 +1,38 @@
+﻿@model IEnumerable<WebTest.Product>
+
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/Layout.cshtml";
+}
+
+<h2>View</h2>
+@Html.ActionLink("Add", "AddProduct", "Product")
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.ProductID)
+    </td>
+    <td>
+        <a> @Html.ActionLink(item.Name, "showProductDetail", "Product", new { id = item.ProductID }, null)</a>
+    </td>
+    <td>
+        <a> @Html.ActionLink("Edit", "EditProduct", "Product", new { id = item.ProductID }, null)</a>
+    </td>
+    <td>
+        <a> @Html.ActionLink("Delete", "RemoveProduct", "Product",  new { id = item.ProductID }, new { onclick = "return confirm('Are you sure you wish to delete this Product');" })</a>
+    </td>
+</tr>
+    }
+
+</table>

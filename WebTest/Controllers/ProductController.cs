@@ -13,6 +13,7 @@ namespace WebTest.Controllers
     {
 
         ProductRepository productRepository = new ProductRepository();
+        ProductModel productModel = new ProductModel();
 
         public ActionResult ShowProducts()
         {
@@ -21,7 +22,7 @@ namespace WebTest.Controllers
 
         public ActionResult ShowProductDetail(int id)
         {
-
+          
             return View(productRepository.FindById(id));
         }
 
@@ -39,11 +40,15 @@ namespace WebTest.Controllers
             return RedirectToAction("ShowProducts");
         }
 
+        
         [HttpPost]
-        public ActionResult Edit(ProductModel model)
+        public ActionResult EditProduct(ProductModel model)
         {
+            model.Name.Trim();
             if (!ModelState.IsValid)
-                return View(model);
+            {
+                return View(productRepository.FindById(model.ProductID));
+            }
             productRepository.Edit(model);
             return RedirectToAction("ShowProductDetail", new { id = model.ProductID });
         }
@@ -56,6 +61,7 @@ namespace WebTest.Controllers
 
         public ActionResult RemoveProduct(int id)
         {
+     
             productRepository.Remove(id);
             return RedirectToAction("ShowProducts");
 

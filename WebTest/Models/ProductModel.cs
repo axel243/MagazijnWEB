@@ -19,12 +19,10 @@ namespace WebTest.Models
         }
 
         public int ProductID { get; set; }
-        [Required]
-        [MaxLength(20)]
-        public string Name { get; set; }
 
-        public virtual ProductModel Products1 { get; set; }
-        public virtual ProductModel Product1 { get; set; }
+        [Required(ErrorMessage = "Je moet een naam invullen")]
+        [StringLength(20)]
+        public string Name { get; set; }
 
 
     }

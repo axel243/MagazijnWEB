@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="230b9894-ad3b-4062-9402-518a48ca1920" name="Default Changelist" comment="" />
+    <list default="true" id="230b9894-ad3b-4062-9402-518a48ca1920" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/WebTest/obj/Debug/WebTest.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/WebTest/obj/Debug/WebTest.csprojAssemblyReference.cache" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -14,6 +16,9 @@
         <option value="CSHTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/WebTest/Web.config" root0="FORCE_HIGHLIGHTING" />
@@ -29,9 +34,11 @@
     <setting file="file://$PROJECT_DIR$/WebTest/App_Start/BundleConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebTest/App_Start/RouteConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebTest/Views/_ViewStart.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebTest/Views/Vestiging/ShowVestigingen.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebTest/App_Start/FilterConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebTest/Views/Product/ShowProducts.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/WebTest/Views/Web.config" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/WebTest/Views/Product/AddProduct.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -102,11 +109,23 @@
       <workItem from="1572511392746" duration="10359000" />
       <workItem from="1572527962855" duration="162000" />
       <workItem from="1572528225432" duration="3439000" />
+      <workItem from="1572943829386" duration="76000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />

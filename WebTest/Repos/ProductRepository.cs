@@ -9,7 +9,7 @@ using WebTest.Models;
 
 namespace WebTest.Repos
 {
-    public class ProductRepository : IProductRepository
+    public class ProductRepository 
     {
         private MagazijnEntities context = new MagazijnEntities();
 
@@ -29,9 +29,9 @@ namespace WebTest.Repos
             context.SaveChanges();
         }
 
-        public Product FindById(int Id)
+        public Product FindById(int ID)
         {
-            return context.Products.Single(p => p.ProductID == Id);
+            return context.Products.Single(v => v.ProductID == ID);
         }
 
         public IEnumerable<Product> GetProducts()
@@ -39,9 +39,9 @@ namespace WebTest.Repos
             return context.Products.ToList();
         }
 
-        public void Remove(int Id)
+        public void Remove(int ID)
         {
-            var entity = context.Products.Single(p => p.ProductID == Id);
+            var entity = context.Products.Single(v => v.ProductID == ID);
             context.Products.Remove(entity);
             context.SaveChanges();
         }

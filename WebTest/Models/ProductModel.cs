@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using WebTest.Validators;
 
 namespace WebTest.Models
 {
@@ -20,8 +21,7 @@ namespace WebTest.Models
 
         public int ProductID { get; set; }
 
-        [Required(ErrorMessage = "Je moet een naam invullen")]
-        [StringLength(20)]
+        [ProductNameValidator]
         public string Name { get; set; }
 
 

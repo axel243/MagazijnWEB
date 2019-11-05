@@ -44,7 +44,6 @@ namespace WebTest.Controllers
         [HttpPost]
         public ActionResult EditProduct(ProductModel model)
         {
-            model.Name.Trim();
             if (!ModelState.IsValid)
             {
                 return View(productRepository.FindById(model.ProductID));
